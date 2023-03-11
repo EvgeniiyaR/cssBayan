@@ -7,6 +7,15 @@
   }
 }
 
+@keyframes scale {
+  0% {
+    transform: scale(0.5, .5);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
 * {
   margin: 0;
   font-size: 1.5rem;
@@ -47,12 +56,12 @@
   content: "";
 }
 
-.invisible-checkbox + .visible-checkbox:not(:checked) {
+.invisible-checkbox:not(:checked) + .visible-checkbox {
   cursor: pointer;
-  color: green;
+  color: rgba(160, 131, 37, 0.753);
 }
 
-.invisible-checkbox + .visible-checkbox:checked {
+.invisible-checkbox:checked + .visible-checkbox {
   cursor: pointer;
   color: black;
 }
@@ -64,10 +73,9 @@
 
 .mem {
   display: none;
-  /* visibility: hidden; */
   max-width: 75vw;
   max-height: 75vh;
-  animation: smooth 1s;
+  animation: smooth, scale 1s;
   cursor: pointer;
 }
 
@@ -85,6 +93,11 @@
   display: block;
   margin: 0 auto;
   /* visibility: visible; */
+}
+
+.invisible-checkbox:hover + .visible-checkbox + .mem {
+  display: block;
+  margin: 0 auto;
 }
 
 .bayan:hover > .label > .invisible-checkbox:not(:checked) + .visible-checkbox {
