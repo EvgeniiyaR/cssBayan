@@ -23,15 +23,18 @@
 
 .body {
   background-color: antiquewhite;
-  margin: 0 auto;
 }
 
 .bayan {
-  max-width: 1280px;
+  max-width: 1920px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  padding: 0 50px;
+}
+
+.bayan-title {
+  padding: 20px 0;
 }
 
 .label {
@@ -58,7 +61,8 @@
 
 .invisible-checkbox:not(:checked) + .visible-checkbox {
   cursor: pointer;
-  color: rgba(160, 131, 37, 0.753);
+  color: rgba(160, 131, 37, .8);
+  transition: color 1s;
 }
 
 .invisible-checkbox:checked + .visible-checkbox {
@@ -77,6 +81,7 @@
   max-height: 75vh;
   animation: smooth, scale 1s;
   cursor: pointer;
+  padding-bottom: 20px;
 }
 
 .bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox::after {
@@ -109,10 +114,18 @@
   * {
     font-size: 1.4rem;
   }
+
+  .bayan {
+    padding: 0 30px;
+  }
 }
 
 @media screen and (max-width: 819px) {
   * {
     font-size: 1.3rem;
+  }
+
+  .bayan {
+    padding: 0 20px;
   }
 }
