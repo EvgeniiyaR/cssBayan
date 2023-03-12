@@ -27,6 +27,7 @@
   "title icon"
   "image image";
   column-gap: 0.5rem;
+  cursor: pointer;
 }
 
 .invisible-checkbox {
@@ -45,14 +46,27 @@
 }
 
 .invisible-checkbox:not(:checked) + .visible-checkbox {
-  cursor: pointer;
   color: rgba(160, 131, 37, .8);
   transition: color 1s;
 }
 
 .invisible-checkbox:checked + .visible-checkbox {
-  cursor: pointer;
   color: black;
+}
+
+.bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox {
+  color: black;
+  transition: color 1s;
+}
+
+.bayan:hover > .label > .invisible-checkbox:not(:checked) + .visible-checkbox {
+  color: black;
+  transition: color 1s;
+}
+
+.bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox {
+  color: rgba(160, 131, 37, .8);
+  opacity: .7;
 }
 
 .icon {
@@ -71,7 +85,6 @@
 .visible-checkbox + .icon {
   transition: opacity 1s, transform 1s;
   opacity: 0;
-  cursor: pointer;
 }
 
 .bayan:hover > .label > .invisible-checkbox + .visible-checkbox + .icon {
@@ -94,15 +107,9 @@
   grid-area: image;
   max-width: 75vw;
   max-height: 0;
-  cursor: pointer;
   margin: 0 auto;
   transform: scale(0, 0);
   transition: max-height 1s, transform 1s;
-}
-
-.bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox {
-  color: black;
-  transition: color 1s;
 }
 
 .invisible-checkbox:checked + .visible-checkbox + .icon + .mem {
@@ -121,18 +128,7 @@
   transition: max-height 1s, transform 1s;
 }
 
-.bayan:hover > .label > .invisible-checkbox:not(:checked) + .visible-checkbox {
-  color: black;
-  transition: color 1s;
-}
-
-.bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox {
-  cursor: pointer;
-  color: rgba(160, 131, 37, .8);
-}
-
 .bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox + .icon + .mem {
-  cursor: pointer;
   opacity: .7;
 }
 
