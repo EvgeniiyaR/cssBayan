@@ -103,6 +103,11 @@
   opacity: 1;
 }
 
+.bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox + .icon {
+  background-image: url(images/icons/plus-orange.svg);
+  opacity: .7;
+}
+
 .mem {
   grid-area: image;
   max-width: 75vw;
