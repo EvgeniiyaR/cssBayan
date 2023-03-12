@@ -1,21 +1,3 @@
-@keyframes smooth {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(0.5, .5);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
-}
-
 * {
   margin: 0;
   font-size: 1.5rem;
@@ -30,25 +12,26 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0 50px;
+  gap: 1.5rem;
+  padding: 0 2rem;
 }
 
 .bayan-title {
-  padding: 20px 0;
+  padding: 1.5rem 0;
 }
 
 .label {
-  border-top: 1px solid rgba(136, 134, 134, .3);
+  border-top: 0.01rem solid rgba(136, 134, 134, .3);
   display: grid;
   grid-template-areas:
   "title icon"
   "image image";
-  gap: 10px;
+  column-gap: 0.5rem;
 }
 
 .invisible-checkbox {
-  width: 1px;
-  height: 1px;
+  width: 0;
+  height: 0;
   overflow: hidden;
   clip-path: inset(0 0 0 0);
 }
@@ -56,26 +39,9 @@
 .visible-checkbox {
   grid-area: title;
   display: flex;
-  padding: 20px 0;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-}
-
-.icon {
-  grid-area: icon;
-  width: 30px;
-  height: 30px;
-  background-image: url(images/icons/plus.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  align-self: center;
-  justify-self: end;
-}
-
-.visible-checkbox + .icon {
-  background-image: none;
-  cursor: pointer;
+  padding: 1rem 0;
 }
 
 .invisible-checkbox:not(:checked) + .visible-checkbox {
@@ -89,30 +55,49 @@
   color: black;
 }
 
-.bayan:hover > .label > .invisible-checkbox:hover + .visible-checkbox  + .icon {
-  background-image: url(images/icons/cross.svg);
-  animation: smooth 1s;
+.icon {
+  grid-area: icon;
+  width: 1rem;
+  height: 1rem;
+  background-image: url(images/icons/plus.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-self: center;
+  justify-self: end;
+  transition: transform 1s;
+  opacity: 1;
+}
+
+.visible-checkbox + .icon {
+  transition: opacity 1s, transform 1s;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .bayan:hover > .label > .invisible-checkbox + .visible-checkbox + .icon {
   background-image: url(images/icons/plus.svg);
-  animation: smooth 1s;
+  transition: opacity 1s, transform 1s;
+  opacity: 1;
+}
+
+.bayan:hover > .label > .invisible-checkbox:hover + .visible-checkbox  + .icon {
+  transform: rotate(45deg);
+}
+
+.bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox + .icon {
+  transform: rotate(45deg);
+  transition: opacity 1s, transform 1s;
+  opacity: 1;
 }
 
 .mem {
   grid-area: image;
-  display: none;
   max-width: 75vw;
-  max-height: 75vh;
+  max-height: 0;
   cursor: pointer;
-  padding-bottom: 20px;
-  animation: smooth 1s, scale 1s;
   margin: 0 auto;
-}
-
-.bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox + .icon {
-  background-image: url(images/icons/cross.svg);
-  animation: smooth 1s;
+  transform: scale(0, 0);
+  transition: max-height 1s, transform 1s;
 }
 
 .bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox {
@@ -122,10 +107,18 @@
 
 .invisible-checkbox:checked + .visible-checkbox + .icon + .mem {
   display: block;
+  transform: scale(1, 1);
+  max-width: 75vw;
+  max-height: 75vh;
+  transition: max-height 1s, transform 1s;
 }
 
 .invisible-checkbox:hover + .visible-checkbox  + .icon + .mem {
   display: block;
+  transform: scale(1, 1);
+  max-width: 75vw;
+  max-height: 75vh;
+  transition: max-height 1s, transform 1s;
 }
 
 .bayan:hover > .label > .invisible-checkbox:not(:checked) + .visible-checkbox {
@@ -138,19 +131,14 @@
   color: rgba(160, 131, 37, .8);
 }
 
-.bayan > .label > .invisible-checkbox:active + .visible-checkbox + .icon + .mem {
+.bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox + .icon + .mem {
   cursor: pointer;
   opacity: .7;
-  animation: smooth 1s;
 }
 
 @media screen and (hover: hover) and (max-width: 1919px) {
   * {
     font-size: 1.4rem;
-  }
-
-  .bayan {
-    padding: 0 30px;
   }
 }
 
@@ -160,6 +148,6 @@
   }
 
   .bayan {
-    padding: 0 20px;
+    padding: 0 1rem;
   }
 }
