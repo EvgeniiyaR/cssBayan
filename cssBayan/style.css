@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.body {
+  background-color: antiquewhite;
+}
+
+.bayan {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0 2rem;
+}
+
+.bayan-title {
+  padding: 1.5rem 0;
+}
+
+.label {
+  border-top: 0.01rem solid rgba(136, 134, 134, .3);
+  display: grid;
+  grid-template-areas:
+  "title icon"
+  "image image";
+  column-gap: 0.5rem;
+  cursor: pointer;
+}
+
+.invisible-checkbox {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  clip-path: inset(0 0 0 0);
+}
+
+.visible-checkbox {
+  grid-area: title;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.invisible-checkbox:not(:checked) + .visible-checkbox {
+  color: rgba(160, 131, 37, .8);
+  transition: color 1s;
+}
+
+.invisible-checkbox:checked + .visible-checkbox {
+  color: black;
+}
+
+.icon {
+  grid-area: icon;
+  width: 1rem;
+  height: 1rem;
+  background-image: url(images/icons/plus.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  align-self: center;
+  justify-self: end;
+  transition: transform 1s;
+  opacity: 1;
+}
+
+.visible-checkbox + .icon {
+  transition: opacity 1s, transform 1s;
+  opacity: 0;
+}
+
+.mem {
+  grid-area: image;
+  max-width: 75vw;
+  max-height: 0;
+  margin: 0 auto;
+  transform: scale(0, 0);
+  transition: max-height 1s, transform 1s;
+}
+
+.invisible-checkbox:checked + .visible-checkbox + .icon + .mem {
+  display: block;
+  transform: scale(1, 1);
+  max-width: 75vw;
+  max-height: 75vh;
+  transition: max-height 1s, transform 1s;
+}
+
+@media (hover: hover) {
+  .bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox {
+  color: black;
+  transition: color 1s;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:not(:checked) + .visible-checkbox {
+    color: black;
+    transition: color 1s;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox {
+    color: rgba(160, 131, 37, .8);
+    opacity: .7;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox + .visible-checkbox + .icon {
+    background-image: url(images/icons/plus.svg);
+    transition: opacity 1s, transform 1s;
+    opacity: 1;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:hover + .visible-checkbox  + .icon {
+    transform: rotate(45deg);
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:checked + .visible-checkbox + .icon {
+    transform: rotate(45deg);
+    transition: opacity 1s, transform 1s;
+    opacity: 1;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox + .icon {
+    background-image: url(images/icons/plus-orange.svg);
+    opacity: .7;
+  }
+
+  .invisible-checkbox:hover + .visible-checkbox  + .icon + .mem {
+    display: block;
+    transform: scale(1, 1);
+    max-width: 75vw;
+    max-height: 75vh;
+    transition: max-height 1s, transform 1s;
+  }
+
+  .bayan:hover > .label > .invisible-checkbox:active + .visible-checkbox + .icon + .mem {
+    opacity: .7;
+  }
+}
+
+@media screen and (max-width: 1919px) {
+  * {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  * {
+    font-size: 1.3rem;
+  }
+
+  .bayan {
+    padding: 0 1rem;
+  }
+}
